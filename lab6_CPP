@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+double har_sum = 0.0;
+void rec_har_sum(int n) {
+    if (n==1) {
+        har_sum += 1.0;
+    } else {
+        rec_har_sum(n-1);
+        har_sum += 1.0/n;
+    }
+}
+void rec_har_sum() {
+    int n;
+    cout << "Enter number n to calculate harmonic sum up to n: ";
+    cin >> n;
+
+    har_sum = 0.0;
+    rec_har_sum(n);
+    cout << "Harmonic sum up to 1/" << n << " is: " << har_sum << endl;
+}
+int main() {
+    int n;
+    cout << "Enter number n to calculate harmonic sum up to n: ";
+    cin >> n;
+    rec_har_sum(n);
+    cout << "Harmonic sum up to 1/" << n << " is: " << har_sum << endl;
+    return 0;
+}
+/*
+int main() {
+    rec_har_sum();
+    return 0;
+}
+*/
