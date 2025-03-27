@@ -1,0 +1,44 @@
+import math
+
+
+def factorial(x):
+    if x == 1 or x == 0:
+        return 1
+    else:
+        return x * factorial(x - 1)
+
+
+print("number 5 factorial is:" + str(factorial(5)))
+
+sine_series = lambda x, n: ((-1) ** n) * (x ** (2 * n + 1)) / factorial(2 * n + 1)
+
+
+def sine_x(x, counter):
+    x_radians = (math.pi * x) / 180
+    sine_value = 0
+
+    for n in range(counter):
+        sine_value += sine_series(x_radians, n)
+    return sine_value
+
+
+x = float(input("Enter angle degrees: "))
+n = int(input("Enter number of terms for approximation: "))
+result = sine_x(x, n)
+
+print(f"sine of {x} degrees (using {n} terms) is approximately: {result}")
+
+
+
+har_sum = 0
+def rec_har_sum(n):
+    global har_sum
+    if n == 1:
+        har_sum += 1
+    else:
+        rec_har_sum(n - 1)
+        har_sum += 1 / n
+
+n = int(input("Enter number n to calculate harm sum up n: "))
+rec_har_sum(n)
+print(f"harm sum up 1/{n} is: {har_sum}")
